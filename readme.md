@@ -14,8 +14,20 @@ Server working on port 5000
 this means ALL OK
 
 ///////////////////////////////
-GET http://localhost:5000/  returns All Animals
-GET http://localhost:5000/someAnimalName returns All PRESENT animals  filtered by name
-GET http://localhost:5000/id/SOME ID ANIMAL    returns single Animal FOUND BY ID
-POST http://localhost:5000/ Creates new Animal required properties <name>,<animal>,<color>
+GET http://localhost:5000/animal  returns All Animals
+GET http://localhost:5000/animal?name=rex returns All PRESENT animals  filtered by name
+GET http://localhost:5000/animal?id=1    returns single Animal FOUND BY ID
+POSTCreates new Animal required properties <name>,<animal>,<color>
 DELETE  http://localhost:5000/IDOFANIMAL   Deletes Animal BY id
+
+POST  http://localhost:5000/registracion       required properties    {
+    "UserPassword":"Admin123",
+    "UserMail":"admin@gmail.com"
+   
+}
+
+POST  http://localhost:5000/login  required properties    {
+    "UserPassword":"Admin123",
+    "UserMail":"admin@gmail.com"
+   
+}

@@ -14,7 +14,7 @@ userRouter.post("/login", body("UserMail").isEmail(), (req, res) => {
     const { UserMail, UserPassword } = req.body
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
-        return res.status(200).json(errors.array()[0]);
+        return res.status(200).send("Invalid Email---"+UserMail);
     }
     if (!UserMail || !UserPassword) { return res.send("Loging and Password Required") }
     const candidate = User.filter(user => user.UserMail == UserMail)

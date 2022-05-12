@@ -5,12 +5,16 @@ const { body, validationResult } = require('express-validator');
 const User = require("../db/userDb")
 
 
+userRouter.get("/users",(req,res)=>{
+res.send(User)
+}
 
+)
 userRouter.post("/login", body("UserMail").isEmail(), (req, res) => {
     const { UserMail, UserPassword } = req.body
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
-        return res.status(400).json(errors.array()[0]);
+        return res.status(200).json(errors.array()[0]);
     }
     if (!UserMail || !UserPassword) { return res.send("Loging and Password Required") }
     const candidate = User.filter(user => user.UserMail == UserMail)
@@ -30,7 +34,7 @@ userRouter.post("/registracion", body("UserMail").isEmail(), (req, res) => {
 
     if (!UserMail) { return res.send("UserMail is required") }
     if (!errors.isEmpty()) {
-        return res.status(400).json(errors.array()[0]);
+        return res.status(300).send("Idvalid email------"+UserMail);
     }
 
     const check = User.filter(user => user.UserMail == UserMail)
